@@ -88,7 +88,6 @@ namespace Task
 				node_to_add->next = tail;
 				node_to_add->prev = tail->prev;
 				node_to_add->value = val;
-				
 				tail->prev->next = node_to_add;
 				tail->prev = node_to_add;
 			}
@@ -102,7 +101,7 @@ namespace Task
 				 val = head;
 				 head = val->next;
 				 delete(val);
-				 head->prev = NULL;
+				 head->prev = 0;
 				 val = head;
 			 }
 		}
@@ -231,7 +230,16 @@ namespace Task
 		}
 		void reverse()        // Reverse the order of units in the list
 		{
-			
+			val = head;
+			while( val->next != NULL)
+			{
+				tail->prev->next = NULL;
+				head->next = head;
+				head->prev = 0;
+				head = tail;
+				tail = tail->prev;
+				val = head->next;
+			}
 		}
 private:
         // ---- The internal implementation routines ----
